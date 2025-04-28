@@ -5,3 +5,7 @@ from .models import Produkt
 def index(request):
     product = Produkt.objects.all()
     return render(request, 'produkty.html', {'product': product})
+
+def admino(request):
+    product = Produkt.objects.all()
+    return render(request, 'admin.html', {'product': product})
