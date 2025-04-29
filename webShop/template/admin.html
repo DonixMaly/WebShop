@@ -16,6 +16,7 @@
                     <th>Nazwa</th>
                     <th>Cena</th>
                     <th>Stan</th>
+                    <th>Co zrobić?</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,10 @@
                     <td>{{ i.nazwa }}</td>
                     <td>{{ i.cena }} PLN</td>
                     <td>{{ i.ilosc }}</td>
+                    <td>
+                        <a href="{% url 'edit_item' item.id %}" class="btn btn-warning btn-sm">Edytuj</a>
+                        <a href="{% url 'delete_item' item.id %}" class="btn btn-danger btn-sm">Usuń</a>
+                    </td>
                 </tr>
                 {% empty %}
                 <tr>
@@ -33,6 +38,12 @@
             </tbody>
         </table>
     </div>
+    <script>
+        document.getElementById('select-all').addEventListener('change', function() {
+            let checkboxes = document.querySelectorAll('input[name="selected_items"]');
+            checkboxes.forEach(checkbox => checkbox.checked = this.checked);
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
 </html>
